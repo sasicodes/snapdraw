@@ -134,14 +134,12 @@ const Toolbar = ({
         </Tooltip>
       </div>
       <div className="items-center hidden gap-2 md:flex">
-        {accountData?.address && !networkData?.chain?.unsupported && (
-          <Link href="/explore">
-            <a className="flex items-center px-4 py-2 text-xs rounded-md bg-orange-50">
-              <MdOutlineExplore className="mr-1 text-sm" />
-              Explore
-            </a>
-          </Link>
-        )}
+        <Link href="/explore">
+          <a className="flex items-center px-4 py-2 text-xs rounded-md bg-orange-50">
+            <MdOutlineExplore className="mr-1 text-sm" />
+            Explore
+          </a>
+        </Link>
         {accountData?.address && !networkData?.chain?.unsupported && (
           <button
             className="flex items-center px-4 py-2 text-xs rounded-md focus:outline-none bg-green-50"
