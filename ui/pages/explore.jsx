@@ -75,7 +75,7 @@ const listQuery = gql`
   }
 `;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { data } = await client.query({
     query: listQuery,
   });
@@ -84,6 +84,5 @@ export async function getStaticProps() {
     props: {
       mints: data.transfers,
     },
-    revalidate: 86400 * 1, //  daily
   };
 }
