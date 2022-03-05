@@ -7,3 +7,9 @@
 body {
   @apply font-sans min-h-screen overflow-x-hidden;
 }
+.bg-image {
+  background-image: url("/bg.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}

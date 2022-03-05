@@ -8,6 +8,7 @@ import { ABI } from "../abi/SnapDrawABI";
 import MintModal from "./MintModal";
 import { useAccount, useContract, useSigner } from "wagmi";
 import toast from "react-hot-toast";
+import { NFT_CONTRACT_ADDRESS } from "../helpers/constants";
 
 const NFT_STORAGE_TOKEN = process.env.NEXT_PUBLIC_NFT_STORAGE_TOKEN;
 
@@ -22,13 +23,13 @@ const Canvas = () => {
     description: "Created via SnapDraw",
   });
   const contract = useContract({
-    addressOrName: "0x0C583BAe7E98555c09650e8f2FCD339AE711Bd0F",
+    addressOrName: NFT_CONTRACT_ADDRESS,
     contractInterface: ABI,
     signerOrProvider: signer,
   });
   const [properties, setProperties] = useState({
     brushColor: "#000000",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fafafa",
     brushRadius: 4,
     lazyRadius: 1,
     imgSrc: "",

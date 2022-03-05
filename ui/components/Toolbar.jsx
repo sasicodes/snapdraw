@@ -135,7 +135,7 @@ const Toolbar = ({
       </div>
       <div className="items-center hidden gap-2 md:flex">
         {accountData?.address && !networkData?.chain?.unsupported && (
-          <Link href="/recents">
+          <Link href="/explore">
             <a className="flex items-center px-4 py-2 text-xs rounded-md bg-orange-50">
               <MdOutlineExplore className="mr-1 text-sm" />
               Explore
