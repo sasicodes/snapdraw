@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { BiLinkExternal } from "react-icons/bi";
-import client from "../helpers/apollo-client";
-import { gql } from "@apollo/client";
+import client from "../helpers/urql-client";
+import { gql } from "urql";
 import { NFT_CONTRACT_ADDRESS } from "../helpers/constants";
 
 const Recents = ({ mints }) => {
@@ -76,10 +76,7 @@ const listQuery = gql`
 `;
 
 export async function getServerSideProps() {
-  const { data } = await client.query({
-    query: listQuery,
-  });
-
+  const { data } = await client.query(listQuery).toPromise();
   return {
     props: {
       mints: data.transfers,
