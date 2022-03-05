@@ -9,11 +9,13 @@ import MintModal from "./MintModal";
 import { useAccount, useContract, useSigner } from "wagmi";
 import toast from "react-hot-toast";
 import { NFT_CONTRACT_ADDRESS } from "../helpers/constants";
+import { useRouter } from "next/router";
 
 const NFT_STORAGE_TOKEN = process.env.NEXT_PUBLIC_NFT_STORAGE_TOKEN;
 
 const Canvas = () => {
   const canvasRef = useRef(null);
+  const router = useRouter();
   const [{ data: signer }] = useSigner();
   const [{ data: accountData }] = useAccount();
   const [loading, setLoading] = useState(false);
@@ -80,15 +82,7 @@ const Canvas = () => {
     try {
       const txn = await contract.safeMint(accountData.address, metadata.url);
       await txn.wait();
-      let mints = [];
-      if (localStorage.getItem("recentMints"))
-        mints = JSON.parse(localStorage.getItem("recentMints"));
-      mints.push({
-        name: nftMeta.name,
-        hash: txn.hash,
-        image: metadata.data.image.pathname,
-      });
-      localStorage.setItem("recentMints", JSON.stringify(mints));
+      router.push("/explore");
     } catch (error) {
       toast.error(error.message);
       console.log("🚀 ~ file: CanvasBoard.jsx ~ mint ~ error", error);
