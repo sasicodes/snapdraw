@@ -5,7 +5,7 @@ import { BiLinkExternal } from "react-icons/bi";
 import client from "../helpers/urql-client";
 import { gql } from "urql";
 import { NFT_CONTRACT_ADDRESS } from "../helpers/constants";
-import shortenAddress from "../helpers/functions;
+import shortenAddress from "../helpers/functions";
 
 const Recents = ({ mints }) => {
   return (
