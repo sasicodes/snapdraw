@@ -5,6 +5,7 @@ import { BiLinkExternal } from "react-icons/bi";
 import client from "../helpers/urql-client";
 import { gql } from "urql";
 import { NFT_CONTRACT_ADDRESS } from "../helpers/constants";
+import { shortenAddress } from "../helpers/functions;
 
 const Recents = ({ mints }) => {
   return (
@@ -33,7 +34,7 @@ const Recents = ({ mints }) => {
                     className="text-sm text-indigo-800 truncate"
                     href={`https://mumbai.polygonscan.com/address/${mint.to}`}
                   >
-                    {mint.to}
+                    {shortenAddress(mint.to)}
                   </a>
                 </div>
                 <div className="flex flex-col">
